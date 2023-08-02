@@ -1,0 +1,36 @@
+import tkinter as tk
+import webbrowser
+
+def minimize_windows():
+    # Code to minimize all windows (Windows OS specific)
+    root.iconify()
+
+def open_google():
+    # Code to open Google in the default web browser
+    webbrowser.open("https://www.google.com")
+
+def show_popup_message():
+    # Code to show a popup message
+    popup = tk.Toplevel(root)
+    popup.title("Message")
+    popup.geometry("200x100")
+    message_label = tk.Label(popup, text="Have a great day! ☺", padx=10, pady=10)
+    message_label.pack()
+
+root = tk.Tk()
+root.title("Popup Window with Buttons")
+root.geometry("300x150")
+
+minimize_button = tk.Button(root, text="Minimize All Windows", command=minimize_windows)
+minimize_button.pack(pady=10)
+
+google_button = tk.Button(root, text="Open Google", command=open_google)
+google_button.pack(pady=10)
+
+popup_button = tk.Button(root, text="Show Message", command=show_popup_message)
+popup_button.pack(pady=10)
+
+root.mainloop()
+
+
+ # CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
