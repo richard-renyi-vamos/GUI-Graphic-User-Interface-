@@ -1,0 +1,46 @@
+import tkinter as tk
+from tkinter import messagebox
+import subprocess
+
+# Function to execute the specified application
+def start_app(app_command):
+    try:
+        subprocess.Popen(app_command)
+    except FileNotFoundError:
+        messagebox.showerror("Error", "Application not found.")
+    except Exception as e:
+        messagebox.showerror("Error", str(e))
+
+# Function to configure and create the buttons
+def create_buttons():
+    buttons_frame = tk.Frame(root)
+    buttons_frame.pack()
+
+    # Replace these commands with the actual applications you want to run
+    app_commands = [
+        "notepad.exe",
+        "calc.exe",
+        "explorer.exe",
+        "mspaint.exe",
+        "cmd.exe",
+        "write.exe",
+        "notepad.exe",
+        "control.exe",
+        "charmap.exe",
+    ]
+
+    for i, app_command in enumerate(app_commands):
+        button = tk.Button(buttons_frame, text=f"App {i+1}", command=lambda cmd=app_command: start_app(cmd))
+        button.pack(side=tk.LEFT, padx=5, pady=5)
+
+# Main application
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Customizable App Launcher")
+    root.geometry("400x200")
+
+    create_buttons()
+
+    root.mainloop()
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
